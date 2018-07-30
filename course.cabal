@@ -3,16 +3,8 @@ version:              0.1.4
 license:              BSD3
 license-file:         etc/LICENCE
 author:               Tony Morris <tmorris@tmorris.net>
-author:               Mark Hibberd <mthibberd@gmail.com>
-author:               Ben Sinclair <ben.d.sinclair@gmail.com>
-author:               James Earl Douglas <james@earldouglas.com>
-author:               Eric Torreborre <etorreborre@yahoo.com>
 maintainer:           Tony Morris
 copyright:            Copyright (C) 2010-2013 Tony Morris
-copyright:            Copyright (C) 2012-2015 National ICT Australia Limited
-copyright:            Copyright (C) 2012      James Earl Douglas
-copyright:            Copyright (C) 2012      Ben Sinclair
-copyright:            Copyright (C) 2016-2017 Data61
 synopsis:             Source code for a functional programming course
 category:             Education
 description:          Source code for a course in functional programming using Haskell
@@ -105,3 +97,16 @@ test-suite            tasty
 
   hs-source-dirs:
                       test
+
+  other-modules:
+                      Course.ApplicativeTest
+                      Course.ComonadTest
+                      Course.ExtendTest
+                      Course.FunctorTest
+                      Course.JsonParserTest
+                      Course.ListTest
+                      Course.MonadTest
+                      Course.OptionalTest
+                      Course.StateTTest
+                      Course.StateTest
+                      Course.ValidationTest

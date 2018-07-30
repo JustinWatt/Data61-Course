@@ -191,7 +191,7 @@ and function, so pattern matching should be intuitive. For example, to run the
 tests for the `List` module you could run:
 
     > cabal test tasty --show-detail=direct --test-option=--pattern=List
-
+    
 Likewise, to run only the tests for the `headOr` function in the `List` module, you could use:
 
     > cabal test tasty --show-detail=direct --test-option=--pattern=List/headOr
