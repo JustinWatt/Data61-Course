@@ -314,98 +314,51 @@ notReverse =
 
 ---- End of list exercises
 
-largeList ::
-  List Int
-largeList =
-  listh [1..50000]
+largeList :: List Int
+largeList = listh [1..50000]
 
-hlist ::
-  List a
-  -> [a]
-hlist =
-  foldRight (:) []
+hlist :: List a -> [a]
+hlist = foldRight (:) []
 
-listh ::
-  [a]
-  -> List a
-listh =
-  P.foldr (:.) Nil
+listh :: [a] -> List a
+listh = P.foldr (:.) Nil
 
-putStr ::
-  Chars
-  -> IO ()
-putStr =
-  P.putStr . hlist
+putStr :: Chars -> IO ()
+putStr = P.putStr . hlist
 
-putStrLn ::
-  Chars
-  -> IO ()
+putStrLn :: Chars -> IO ()
 putStrLn =
   P.putStrLn . hlist
 
-readFile ::
-  FilePath
-  -> IO Chars
-readFile =
-  P.fmap listh . P.readFile . hlist
+readFile :: FilePath -> IO Chars
+readFile = P.fmap listh . P.readFile . hlist
 
-writeFile ::
-  FilePath
-  -> Chars
-  -> IO ()
-writeFile n s =
-  P.writeFile (hlist n) (hlist s)
+writeFile :: FilePath -> Chars -> IO ()
+writeFile n s = P.writeFile (hlist n) (hlist s)
 
-getLine ::
-  IO Chars
-getLine =
-  P.fmap listh P.getLine
+getLine :: IO Chars
+getLine = P.fmap listh P.getLine
 
-getArgs ::
-  IO (List Chars)
-getArgs =
-  P.fmap (listh . P.fmap listh) E.getArgs
+getArgs :: IO (List Chars)
+getArgs = P.fmap (listh . P.fmap listh) E.getArgs
 
-isPrefixOf ::
-  Eq a =>
-  List a
-  -> List a
-  -> Bool
-isPrefixOf Nil _ =
-  True
-isPrefixOf _  Nil =
-  False
-isPrefixOf (x:.xs) (y:.ys) =
-  x == y && isPrefixOf xs ys
+isPrefixOf :: Eq a => List a -> List a -> Bool
+isPrefixOf Nil _ = True
+isPrefixOf _  Nil = False
+isPrefixOf (x:.xs) (y:.ys) = x == y && isPrefixOf xs ys
 
-isEmpty ::
-  List a
-  -> Bool
-isEmpty Nil =
-  True
-isEmpty (_:._) =
-  False
+isEmpty :: List a -> Bool
+isEmpty Nil = True
+isEmpty (_:._) = False
 
-span ::
-  (a -> Bool)
-  -> List a
-  -> (List a, List a)
-span p x =
-  (takeWhile p x, dropWhile p x)
+span :: (a -> Bool) -> List a -> (List a, List a)
+span p x = (takeWhile p x, dropWhile p x)
 
-break ::
-  (a -> Bool)
-  -> List a
-  -> (List a, List a)
-break p =
-  span (not . p)
+break :: (a -> Bool) -> List a -> (List a, List a)
+break p = span (not . p)
 
-dropWhile ::
-  (a -> Bool)
-  -> List a
-  -> List a
-dropWhile _ Nil =
-  Nil
+dropWhile :: (a -> Bool) -> List a -> List a
+dropWhile _ Nil = Nil
 dropWhile p xs@(x:.xs') =
   if p x
     then
